@@ -26,9 +26,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Compile
-      - run: npm install
+      - name: Npm Install
+        run: npm install
+      - name: Dependencies
         run: npm intall -g @angular/cli
+      - name: Build  
         run: ng build --configuration=developer
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -46,9 +48,11 @@ jobs:
       name: Development
       url: 'http://dev.site'
     steps:
-      - name: Deploy
-      - run: npm install
+      - name: Npm Install
+        run: npm install
+      - name: Dependencies
         run: npm intall -g @angular/cli
+      - name: Build  
         run: ng build --configuration=developer
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -65,9 +69,11 @@ jobs:
       name: Production
       url: 'http://prod.site'
     steps:
-      - name: Deploy
-      - run: npm install
+      - name: Npm Install
+        run: npm install
+      - name: Dependencies   
         run: npm intall -g @angular/cli
+      - name: Build
         run: ng build --configuration=production
       - uses: aws-actions/configure-aws-credentials@v1
         with:
