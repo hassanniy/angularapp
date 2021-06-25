@@ -30,7 +30,7 @@ jobs:
         run: npm install
         run: npm intall -g @angular/cli
         run: ng build --configuration=developer
-        uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -39,7 +39,7 @@ jobs:
         
       # Runs a set of commands using the runners shell
   DeployDev: 
-  - name: Deploy To Dev
+    name: Deploa step cannot have both the `uses` and `run` keysy To Dev
     needs: [Build]
     runs-on: ubuntu-latest
     environment:
