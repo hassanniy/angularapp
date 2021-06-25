@@ -29,7 +29,6 @@ jobs:
           node-version: '14'
       - name: Npm Install
         run: npm install
-      - run: npm install -g @angular/cli
       - name: Npm Build
         run: npm run build
 
