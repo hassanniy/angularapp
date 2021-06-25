@@ -27,8 +27,16 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile
-        run: echo Hello, world!
-
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=developer
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - run: aws s3 sync ./out s3://angularappp
+        
       # Runs a set of commands using the runners shell
   DeployDev: 
     name: Deploy To Dev
@@ -39,9 +47,15 @@ jobs:
       url: 'http://dev.site'
     steps:
       - name: Deploy
-        run: echo I am deploying!
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=developer
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - run: aws s3 sync ./out s3://angularappp
   DeployProd:
     name: Deploy To Production
     needs: [Build]
@@ -51,4 +65,12 @@ jobs:
       url: 'http://prod.site'
     steps:
       - name: Deploy
-        run: echo I am deploying
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=production
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - run: aws s3 sync ./out s3://angularappp
