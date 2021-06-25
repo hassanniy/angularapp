@@ -28,9 +28,9 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm install
+        run: npm ci
       - name: Npm Build
-        run: npm run build
+        run: npm run build:ci
 
       # Runs a single command using the runners shell
       - name: AWS Credentials  
@@ -57,9 +57,9 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm install
+        run: npm ci
       - name: Npm Build
-        run: npm build
+        run: npm run build:ci
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -84,9 +84,9 @@ jobs:
         with:
           node-version: '14' 
       - name: Npm Install
-        run: npm install
+        run: npm ci
       - name: Npm Build
-        run: npm build
+        run: npm run build:ci
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
