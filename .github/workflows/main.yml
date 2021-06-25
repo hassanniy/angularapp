@@ -33,7 +33,7 @@ jobs:
   DeployDev: 
     name: Deploy To Dev
     needs: [Build]
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     environment:
       name: Development
       url: 'http://dev.site'
