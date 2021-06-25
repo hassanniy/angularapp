@@ -38,6 +38,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-s3-bucket: ${{ secrets.AWS_S3_BUCKET }}
           aws-region: ${{secrets.AWS_REGION }}
+      - run: aws s3 sync . s3://angularappp
         
       # Runs a set of commands using the runners shell
   DeployDev: 
@@ -60,6 +61,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-s3-bucket: ${{ secrets.AWS_S3_BUCKET }}
           aws-region: ${{secrets.AWS_REGION }}
+      - run: aws s3 sync . s3://angularappp
 
       
   DeployProd:
@@ -82,3 +84,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-s3-bucket: ${{ secrets.AWS_S3_BUCKET }}
           aws-region: ${{secrets.AWS_REGION }}
+      - run: aws s3 sync . s3://angularappp
