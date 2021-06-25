@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm install -g
+        run: npm install
       - name: Npm Build
         run: npm run build
 
@@ -57,9 +57,9 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm install -g
+        run: npm install 
       - name: Npm Build
-        run: npm run build
+        run: npm build
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -84,7 +84,7 @@ jobs:
         with:
           node-version: '14' 
       - name: Npm Install
-        run: npm install -g
+        run: npm install
       - name: Npm Build
         run: npm run build --prod
 
