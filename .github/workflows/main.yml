@@ -36,7 +36,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - run: |
-          npm install -g
+          npm -g install npm
           npm install -g @angular/cli
           ng build
                  
@@ -64,7 +64,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - run: |
-          npm install -g
+          npm -g install npm
           npm install -g @angular/cli
           ng build --configuration=developer
                     
@@ -91,7 +91,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - run: |
-          npm install -g
+          npm -g install npm
           npm install -g @angular/cli
           ng build --prod
                     
