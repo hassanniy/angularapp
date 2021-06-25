@@ -39,6 +39,7 @@ jobs:
           npm -g install npm
           npm install -g @angular/cli
           ng build
+          cd src/angularapp
                  
           
       - name: AWS S3 Sync     
@@ -67,6 +68,7 @@ jobs:
           npm -g install npm
           npm install -g @angular/cli
           ng build --configuration=developer
+          cd src/angularapp
                     
       - name: AWS S3 Sync     
         run: |
@@ -94,6 +96,7 @@ jobs:
           npm -g install npm
           npm install -g @angular/cli
           ng build --prod
+          cd src/angularapp
                     
       - name: AWS S3 Sync     
         run: |
