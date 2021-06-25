@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm ci
+        run: npm install -g
       - name: Npm Build
         run: npm run build
 
@@ -57,7 +57,7 @@ jobs:
         with:
           node-version: '14'
       - name: Npm Install
-        run: npm ci
+        run: npm install -g
       - name: Npm Build
         run: npm run build
 
@@ -84,7 +84,7 @@ jobs:
         with:
           node-version: '14' 
       - name: Npm Install
-        run: npm ci
+        run: npm install -g
       - name: Npm Build
         run: npm run build --prod
 
