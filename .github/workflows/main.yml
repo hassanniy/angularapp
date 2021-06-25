@@ -59,7 +59,7 @@ jobs:
       - name: Npm Install
         run: npm install
       - name: Npm Build
-        run: npm run build
+        run: npm build
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -86,7 +86,7 @@ jobs:
       - name: Npm Install
         run: npm install
       - name: Npm Build
-        run: npm run build --prod
+        run: npm build
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
