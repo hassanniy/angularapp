@@ -27,7 +27,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Npm Install  
-        run: npm install     
+        run: npm install  
+      - name: Angular
+        run: npm install -g @angular/cli
       - name: Build
         run: ng build
       - name: AWS Credentials  
@@ -50,7 +52,9 @@ jobs:
       url: 'http://dev.site'
     steps:
       - name: Npm Install  
-        run: npm install     
+        run: npm install  
+      - name: Angular
+        run: npm install -g @angular/cli
       - name: Build
         run: ng build --configuration=developer
       - name: AWS Credentials 
@@ -73,7 +77,9 @@ jobs:
       url: 'http://prod.site'
     steps:
       - name: Npm Install  
-        run: npm install     
+        run: npm install
+      - name: Angular
+        run: npm install -g @angular/cli
       - name: Build
         run: ng build --configuration=production
       - name: AWS Credentials 
