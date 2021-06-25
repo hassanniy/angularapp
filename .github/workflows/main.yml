@@ -30,7 +30,7 @@ jobs:
       - name: Npm Install
         run: npm ci
       - name: Npm Build
-        run: npm run build:ci
+        run: npm run build
 
       # Runs a single command using the runners shell
       - name: AWS Credentials  
@@ -59,7 +59,7 @@ jobs:
       - name: Npm Install
         run: npm ci
       - name: Npm Build
-        run: npm run build:ci
+        run: npm run build
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -86,7 +86,7 @@ jobs:
       - name: Npm Install
         run: npm ci
       - name: Npm Build
-        run: npm run build:ci
+        run: npm run build --prod
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
