@@ -29,8 +29,9 @@ jobs:
           node-version: '14'
       - name: Npm Install
         run: npm install
+      - run: npm install -g @angular/cli
       - name: Npm Build
-        run: npm build --prod
+        run: ng build
 
       # Runs a single command using the runners shell
       - name: AWS Credentials  
@@ -58,9 +59,9 @@ jobs:
           node-version: '14'
       - name: Npm Install
         run: npm install
+      - run: npm install -g @angular/cli
       - name: Npm Build
-        run: npm build
-
+        run: ng build
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -86,8 +87,9 @@ jobs:
           node-version: '14' 
       - name: Npm Install
         run: npm install
+      - run: npm install -g @angular/cli
       - name: Npm Build
-        run: npm build --prod
+        run: ng build --prod
 
       - name: AWS Credentials 
         uses: aws-actions/configure-aws-credentials@v1
