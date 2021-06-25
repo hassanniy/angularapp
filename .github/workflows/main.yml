@@ -24,8 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Use Node.js 14 LTS
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@master
         with:
           node-version: '14'
 
@@ -53,8 +52,7 @@ jobs:
       name: Development
       url: 'http://dev.site'
     steps:
-      - name: Use Node.js 14 LTS
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@master
         with:
           node-version: '14'
       - name: Npm Install  
@@ -80,8 +78,7 @@ jobs:
       name: Production
       url: 'http://prod.site'
     steps:
-      - name: Use Node.js 14 LTS
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@master
         with:
           node-version: '14'
       - name: Npm Install  
