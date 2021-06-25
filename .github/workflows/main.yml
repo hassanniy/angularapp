@@ -27,19 +27,19 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile
-        run: npm install
-        run: npm intall -g @angular/cli
-        run: ng build --configuration=developer
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=developer
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-        run: aws s3 sync ./out s3://angularappp
+      - run: aws s3 sync ./out s3://angularappp
         
       # Runs a set of commands using the runners shell
   DeployDev: 
-    name: Deploa step cannot have both the `uses` and `run` keysy To Dev
+    name: Deploy To Development
     needs: [Build]
     runs-on: ubuntu-latest
     environment:
@@ -47,17 +47,18 @@ jobs:
       url: 'http://dev.site'
     steps:
       - name: Deploy
-        run: npm install
-        run: npm intall -g @angular/cli
-        run: ng build --configuration=developer
-        uses: aws-actions/configure-aws-credentials@v1
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=developer
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - run: aws s3 sync ./out s3://angularappp
+      
   DeployProd:
-  - name: Deploy To Production
+    name: Deploy To Production
     needs: [Build]
     runs-on: ubuntu-latest
     environment:
@@ -65,12 +66,12 @@ jobs:
       url: 'http://prod.site'
     steps:
       - name: Deploy
-        run: npm install
-        run: npm intall -g @angular/cli
-        run: ng build --configuration=production
-        uses: aws-actions/configure-aws-credentials@v1
+      - run: npm install
+      - run: npm intall -g @angular/cli
+      - run: ng build --configuration=production
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-        run: aws s3 sync ./out s3://angularappp
+      - run: aws s3 sync ./out s3://angularappp
