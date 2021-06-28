@@ -52,7 +52,7 @@ jobs:
                  
           
       - name: AWS S3 Sync     
-        run: aws s3 sync ./dist/my-app s3://angularappp
+        run: aws s3 sync ./dist s3://angularappp
       # Runs a set of commands using the runners shell
   DeployDev: 
     name: Deploy To Development
@@ -87,7 +87,7 @@ jobs:
                  
           
       - name: AWS S3 Sync     
-        run: aws s3 sync ./dist/my-app s3://angularappp
+        run: aws s3 sync ./dist s3://angularappp
   DeployProd:
     name: Deploy To Production
     needs: [Build]
@@ -121,4 +121,4 @@ jobs:
                  
           
       - name: AWS S3 Sync     
-        run: aws s3 sync ./dist/my-app s3://angularappp
+        run: aws s3 sync ./dist s3://angularappp
