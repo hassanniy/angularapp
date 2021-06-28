@@ -19,6 +19,10 @@ jobs:
   Build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,23 +31,28 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '14'
-      - name: Npm Install
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+         node-version: ${{ matrix.node-version }}
+      - name: NPM Install  
         run: npm install
-      - name: Npm Build
+      - name: NPM Build  
         run: npm run build
-
+        env:
+         CI: true
       # Runs a single command using the runners shell
       - name: AWS Credentials  
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: us-east-1
                  
           
       - name: AWS S3 Sync     
-        run: |
-         aws s3 sync . s3://angularappp
+        run: aws s3 sync ./dist/my-app s3://angularappp
       # Runs a set of commands using the runners shell
   DeployDev: 
     name: Deploy To Development
@@ -53,25 +62,32 @@ jobs:
       name: development
       url: 'http://dev.site'
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@master
         with:
           node-version: '14'
-      - name: Npm Install
-        run: npm install 
-      - name: Npm Build
-        run: npm build
-
-      - name: AWS Credentials 
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+         node-version: ${{ matrix.node-version }}
+      - name: NPM Install  
+        run: npm install
+      - name: NPM Build  
+        run: npm run build
+        env:
+         CI: true
+      # Runs a single command using the runners shell
+      - name: AWS Credentials  
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: us-east-1
+                 
+          
       - name: AWS S3 Sync     
-        run: |
-         aws s3 sync . s3://angularappp
-    
-    
+        run: aws s3 sync ./dist/my-app s3://angularappp
   DeployProd:
     name: Deploy To Production
     needs: [Build]
@@ -80,21 +96,29 @@ jobs:
       name: production
       url: 'http://prod.site'
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@master
         with:
-          node-version: '14' 
-      - name: Npm Install
+          node-version: '14'
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+         node-version: ${{ matrix.node-version }}
+      - name: NPM Install  
         run: npm install
-      - name: Npm Build
-        run: npm build
-
-      - name: AWS Credentials 
+      - name: NPM Build  
+        run: npm run build
+        env:
+         CI: true
+      # Runs a single command using the runners shell
+      - name: AWS Credentials  
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-                    
+          aws-region: us-east-1
+                 
+          
       - name: AWS S3 Sync     
-        run: |
-         aws s3 sync . s3://angularappp
+        run: aws s3 sync ./dist/my-app s3://angularappp
